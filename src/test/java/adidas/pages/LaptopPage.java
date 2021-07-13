@@ -15,6 +15,11 @@ public class LaptopPage {
     @FindBy(linkText = "Dell i7 8gb")
     WebElement DellI78gb;
 
+    @FindBy(linkText = "Add to cart")
+    WebElement addToCart;
+
+
+
 
 
 }
