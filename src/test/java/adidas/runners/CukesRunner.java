@@ -9,7 +9,8 @@ import org.junit.runner.RunWith;
         plugin = "html:target/cucumber-report.html",
         features = "src/test/resources/features",
         glue = "adidas/step_definitions",
-        dryRun = false
+        dryRun = false,
+        tags = ""
 
 )
 

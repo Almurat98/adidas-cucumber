@@ -1,6 +1,7 @@
 package adidas.step_definitions;
 
 import adidas.pages.CartPage;
+import adidas.pages.FormPage;
 import adidas.pages.HomePage;
 import adidas.pages.LaptopPage;
 import adidas.utilities.BrowserUtils;
@@ -18,6 +19,7 @@ public class Purchase_StepDefinitions {
     HomePage homePage=new HomePage();
     CartPage cartPage=new CartPage();
     LaptopPage laptopPage=new LaptopPage();
+    FormPage formPage=new FormPage();
 
     @Given("customer is on the home page")
     public void customer_opens_homePage(){
@@ -69,30 +71,36 @@ cartPage.deleteButtonForDell.click();
     @And("customer fill in all web form fields")
     public void customer_fills_webForm(){
         Faker faker=new Faker();
-        cartPage.inputName.sendKeys(faker.name().fullName());
-        cartPage.inputCountry.sendKeys(faker.address().country());
-        cartPage.inputCity.sendKeys(faker.address().city());
-        cartPage.inputCreditCard.sendKeys(faker.number().digits(16));
-        cartPage.inputMonth.sendKeys(faker.number().numberBetween(1,12)+"");
-        cartPage.inputYear.sendKeys(faker.number().digits(4));
+        formPage.inputName.sendKeys(faker.name().fullName());
+        formPage.inputCountry.sendKeys(faker.address().country());
+        formPage.inputCity.sendKeys(faker.address().city());
+        formPage.inputCreditCard.sendKeys(faker.number().digits(16));
+        formPage.inputMonth.sendKeys(faker.number().numberBetween(1,12)+" ");
+        formPage.inputYear.sendKeys(faker.number().digits(4));
     }
     @And("customer clicks on 'Purchase'")
     public void customer_clicks_purchase(){
-        cartPage.placeOrderButton.click();
+        formPage.purchaseButton.click();
     }
     @And("customer takes screen shot of order id and amount")
     public void customer_logs_orderID_orderAmount(){
-     String popUpInfo=cartPage.orderInfo.getText();
-        System.out.println(popUpInfo);
+     String popUpInfo=formPage.orderInfo.getText();
+        String []eachLine=popUpInfo.split("\n");
+        for(int i=0;i<eachLine.length;i++){
+            if(eachLine[i].startsWith("Id")||eachLine[i].startsWith("Amount")){
+                System.out.println(eachLine[i]);
+            }
+        }
     }
     @And("customer compare expected purchase amount and actual amount")
     public void customer_compare_expectedAmount_and_actualAmount(){
         int expectedAmount=790;
+        }
 
-    }
+
     @Then("customer clicks on 'Ok'")
     public void customer_clicks_ok(){
-        cartPage.OKButton.click();
+        formPage.OKButton.click();
     }
 
 }

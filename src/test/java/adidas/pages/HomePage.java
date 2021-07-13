@@ -13,7 +13,7 @@ public class HomePage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy (id="cartur")
+    @FindBy (xpath="//a[.='Cart']")
    public  WebElement cartButton;
 
     @FindBy(linkText ="Laptops")
