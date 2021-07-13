@@ -10,13 +10,13 @@ public class LaptopPage {
         PageFactory.initElements(Driver.getDriver(),this);}
 
     @FindBy (linkText = "Sony vaio i5")
-    WebElement SonyVaioI5;
+    public WebElement SonyVaioI5;
 
     @FindBy(linkText = "Dell i7 8gb")
-    WebElement DellI78gb;
+    public WebElement DellI78gb;
 
     @FindBy(linkText = "Add to cart")
-    WebElement addToCart;
+    public WebElement addToCart;
 
 
 

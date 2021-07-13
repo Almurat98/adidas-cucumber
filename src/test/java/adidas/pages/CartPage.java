@@ -9,36 +9,38 @@ public class CartPage {
     public CartPage() {
         PageFactory.initElements(Driver.getDriver(),this);}
 
-        @FindBy (linkText = "Delete")
-        WebElement delete;
+@FindBy(xpath = "//tbody[@id='tbodyid']//tr[2]")
+public WebElement delli78gb;
+    @FindBy(xpath = "//tbody[@id='tbodyid']//tr[2]//a")
+    public WebElement deleteButtonForDell;
 
     @FindBy (xpath = "//button[@class='btn btn-success']")
-    WebElement placeOrderButton;
+    public WebElement placeOrderButton;
 
     @FindBy(id="name")
-    WebElement inputName;
+   public WebElement inputName;
 
     @FindBy(id="country")
-    WebElement inputCountry;
+    public WebElement inputCountry;
 
     @FindBy(id="city")
-    WebElement inputCity;
+    public WebElement inputCity;
 
     @FindBy(id="card")
-    WebElement inputCreditCard;
+    public WebElement inputCreditCard;
 
     @FindBy(id="month")
-    WebElement inputMonth;
+    public WebElement inputMonth;
 
     @FindBy(id="year")
-    WebElement inputYear;
+   public WebElement inputYear;
 
     @FindBy (xpath = "//button[.='Purchase']")
-    WebElement purchaseButton;
+    public WebElement purchaseButton;
 
     @FindBy(xpath = "//p[@class='lead text-muted ']")
-    WebElement orderInfo;
+    public WebElement orderInfo;
 
     @FindBy(xpath = "//button[@class='confirm btn btn-lg btn-primary']")
-    WebElement OKButton;
+   public WebElement OKButton;
 }
