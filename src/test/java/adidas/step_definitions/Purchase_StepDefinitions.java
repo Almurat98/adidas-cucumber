@@ -13,6 +13,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.Alert;
 
 public class Purchase_StepDefinitions {
@@ -93,13 +94,22 @@ cartPage.deleteButtonForDell.click();
         }
     }
     @And("customer compare expected purchase amount and actual amount")
-    public void customer_compare_expectedAmount_and_actualAmount(){
-        int expectedAmount=790;
+    public void customer_compare_expectedAmount_and_actualAmount() {
+        int expectedAmount = 790;
+        int actualAmount = 0;
+        String popUpInfo = formPage.orderInfo.getText();
+        String[] eachLine = popUpInfo.split("\n");
+        for (int i = 0; i < eachLine.length; i++) {
+            if (eachLine[i].startsWith("Amount")) {
+                actualAmount = Integer.parseInt(eachLine[i].substring(8, 11));
+            }
         }
-
+        Assert.assertEquals(actualAmount,expectedAmount);
+    }
 
     @Then("customer clicks on 'Ok'")
     public void customer_clicks_ok(){
+        BrowserUtils.sleep(2);
         formPage.OKButton.click();
     }
 
